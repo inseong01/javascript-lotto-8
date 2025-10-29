@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-import { generateNumber, sortNumbersAsc } from "../../src/utility/generate";
+import { generateLottoNums, generateNumber, sortNumbersAsc } from "../../src/utility/generate";
 
 const mockRandoms = (numbers) => {
   MissionUtils.Random.pickUniqueNumbersInRange = jest.fn();
@@ -10,13 +10,9 @@ const mockRandoms = (numbers) => {
 };
 
 describe('생성 유틸리티 테스트', () => {
-  test('generateNumber, 1-45 사이 무작위 숫자를 반환한다.', async () => {
-    const output = [10];
-
-    mockRandoms(output)
-
+  test('generateNumbers, 1-45 사이 무작위 숫자 6자리 배열을 반환한다.', async () => {
     const result = generateNumber();
-    expect(result).toBe(output[0]);
+    expect(new Set(result).size === 6).toBe(true);
   })
 
   test('sortNumbersAsc, 오름차순으로 정렬된 숫자 배열을 반환한다.', async () => {

@@ -1,6 +1,6 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-import getUserInput from "../../src/utility/system";
+import { getUserInput, print } from "../../src/utility/system";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -12,14 +12,14 @@ const mockQuestions = (inputs) => {
   });
 };
 
-const getReadLineSpy = () => {
-  const readLineSpy = jest.spyOn(MissionUtils.Console, "readLineAsync");
+const getPrintSpy = () => {
+  const readLineSpy = jest.spyOn(MissionUtils.Console, "print");
   readLineSpy.mockClear();
   return readLineSpy;
 };
 
 describe('시스템 유틸리티 테스트', () => {
-  test('사용자가 입력한 내용을 출력한다.', async () => {
+  test('getUserInput, 사용자가 입력한 내용을 출력한다.', async () => {
     const input = ['result'];
     const output = ['result'];
 
@@ -27,5 +27,15 @@ describe('시스템 유틸리티 테스트', () => {
 
     const result = await getUserInput('');
     expect(result).toBe(output[0]);
+  })
+
+  test('print, 결과를 출력한다.', () => {
+    const input = 'qwe';
+
+    const printSpy = getPrintSpy()
+
+    print(input);
+
+    expect(printSpy).toHaveBeenCalledWith(input)
   })
 })

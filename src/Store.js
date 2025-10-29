@@ -8,7 +8,7 @@ class Store {
 
   #validate(cash) {
     if (cash % 1000 !== 0) {
-      throw new Error("[ERROR] 천원 단워로 입력해주세요.");
+      throw new Error('[ERROR] 천원 단워로 입력해주세요.');
     }
   }
 

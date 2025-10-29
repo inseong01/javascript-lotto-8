@@ -5,7 +5,15 @@ import { MissionUtils } from '@woowacourse/mission-utils';
  * @param {string} prompt 시스템 안내 프롬프트
  * @returns 입력 값
  */
-export default async function getUserInput(prompt) {
+export async function getUserInput(prompt) {
   const input = await MissionUtils.Console.readLineAsync(prompt);
   return input;
+}
+
+/**
+ * 인자를 출력한다.
+ * @param {string} result 출력 결과
+ */
+export function print(result) {
+  MissionUtils.Console.print(result);
 }

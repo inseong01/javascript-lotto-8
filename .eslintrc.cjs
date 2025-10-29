@@ -12,6 +12,10 @@ module.exports = {
       {
         js: "always",
       }
-    ]
-  }
+    ],
+    "class-methods-use-this": ["error", { "exceptMethods": ['#validate'] }]
+  },
+  "parserOptions": {
+    "ecmaVersion": 13,
+  },
 };

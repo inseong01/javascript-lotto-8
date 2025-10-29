@@ -1,4 +1,4 @@
-class Lotto {
+class BonusLotto {
   #numbers;
 
   constructor(numbers) {
@@ -15,18 +15,6 @@ class Lotto {
       throw new Error("[ERROR] 로또 번호는 중복되어서는 안 됩니다.");
     }
   }
-
-  // TODO: 추가 기능 구현
-
-  /**
-   * 로또 번호와 당첨 번호가 일치하는 개수를 반환
-   * @param {number[]} lottoNums 당첨 번호 
-   * @returns {number}
-   */
-  getMatchCount(lottoNums) {
-    const counts = this.#numbers.filter((num) => lottoNums.includes(num));
-    return counts.length;
-  }
 }
 
-export default Lotto;
+export default BonusLotto;

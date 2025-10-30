@@ -4,15 +4,15 @@ import { calculateProfitRate, getLottoResult } from "../../src/utility/calculate
 
 describe('계산 유틸리티 테스트', () => {
   test('calculateProfitRate, 로또 당첨 결과를 받으면 수익률을 반환한다.', async () => {
-    const CASH = 3000;
+    const CASH = 8000;
     const lottoResult = {
-      '3개': 0,
+      '3개': 1,
       '4개': 0,
-      '5개': 1,
-      '5개 일치, 보너스볼': 0,
-      '6개': 1,
+      '5개': 0,
+      '5개 일치, 보너스 볼': 0,
+      '6개': 0,
     }
-    const output = 667165.7
+    const output = 62.5
 
     const profit = calculateProfitRate(lottoResult, CASH);
     expect(profit).toBe(output);
@@ -27,7 +27,7 @@ describe('계산 유틸리티 테스트', () => {
       '3개': 0,
       '4개': 1,
       '5개': 0,
-      '5개 일치, 보너스볼': 0,
+      '5개 일치, 보너스 볼': 0,
       '6개': 0,
     }
 

@@ -1,6 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 
-import { getUserInput, print } from "../../src/utility/system";
+import { getUserInput, print, printLottoNumbers } from "../../src/utility/system";
+import Lotto from "../../src/Lotto";
 
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
@@ -37,5 +38,19 @@ describe('시스템 유틸리티 테스트', () => {
     print(input);
 
     expect(printSpy).toHaveBeenCalledWith(input)
+  })
+
+  test('printLottoNumbers, 로또 번호를 [] 양식에 맞춰 출력한다.', () => {
+    const input = new Lotto(['1', '2', '3', '4', '5', '6']);
+
+    const printSpy = getPrintSpy()
+
+    printLottoNumbers(input);
+
+    const logs = ["[1, 2, 3, 4, 5, 6]"];
+
+    logs.forEach((log) => {
+      expect(printSpy).toHaveBeenCalledWith(expect.stringContaining(log));
+    });
   })
 })

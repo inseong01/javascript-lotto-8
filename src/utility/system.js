@@ -17,3 +17,13 @@ export async function getUserInput(prompt) {
 export function print(result) {
   MissionUtils.Console.print(result);
 }
+
+/**
+ * 양식에 맞춰 로또 번호를 출력한다.
+ * @param {Lotto} lotto 로또
+ */
+export function printLottoNumbers(lotto) {
+  const numbers = lotto.getNumbers();
+  const numbersFormat = numbers.join(', ');
+  print(`[${numbersFormat}]`);
+}

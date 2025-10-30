@@ -13,7 +13,7 @@ describe("매장 클래스 테스트", () => {
     }).toThrow("[ERROR]");
   });
 
-  test("구입금액에 맞춰 로또 개수를 반환한다.", () => {
+  test("getLottoAmount, 구입금액에 맞춰 로또 개수를 반환한다.", () => {
     const inputs = ['1000', '2000', '10000'];
     const outputs = [1, 2, 10];
 
@@ -21,6 +21,17 @@ describe("매장 클래스 테스트", () => {
       const store = new Store(cash);
 
       expect(store.getLottoAmount()).toBe(outputs[i]);
+    });
+  });
+
+  test("getPaidCash, 구입금액을 반환한다.", () => {
+    const inputs = ['1000', '2000', '10000'];
+    const outputs = [1000, 2000, 10000];
+
+    inputs.forEach((cash, i) => {
+      const store = new Store(cash);
+
+      expect(store.getPaidCash()).toBe(outputs[i]);
     });
   });
 });

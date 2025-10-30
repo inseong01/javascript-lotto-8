@@ -16,6 +16,10 @@ class Store {
     const amount = this.#cash / 1000;
     return amount;
   }
+
+  getPaidCash() {
+    return Number(this.#cash);
+  }
 }
 
 export default Store;

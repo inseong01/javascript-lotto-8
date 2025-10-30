@@ -10,6 +10,7 @@ class BonusLotto {
     if (!bonus) {
       throw new Error('[ERROR] 보너스 번호를 입력해주세요.');
     }
+
     const isSmallTha0 = bonus <= 0;
     if (isSmallTha0) {
       throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');

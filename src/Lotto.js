@@ -1,9 +1,11 @@
+import { transformToNumber } from './utility/generate.js';
+
 class Lotto {
   #numbers;
 
   constructor(numbers) {
     this.#validate(numbers);
-    this.#numbers = numbers;
+    this.#numbers = transformToNumber(numbers);
   }
 
   #validate(numbers) {

@@ -3,7 +3,7 @@ class BonusLotto {
 
   constructor(bonus, lottoNums) {
     this.#validate(bonus, lottoNums);
-    this.#bonus = (bonus);
+    this.#bonus = Number(bonus);
   }
 
   #validate(bonus, lottoNums = []) {
@@ -25,7 +25,7 @@ class BonusLotto {
       throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');
     }
 
-    if (lottoNums.includes(bonus)) {
+    if (lottoNums.includes(Number(bonus))) {
       throw new Error('[ERROR] 보너스 번호는 로또 번호와 중복될 수 없습니다.');
     }
   }

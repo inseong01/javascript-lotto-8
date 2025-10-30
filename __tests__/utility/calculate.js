@@ -19,8 +19,8 @@ describe('계산 유틸리티 테스트', () => {
   })
 
   test('getLottoResult, 당첨번호와 나의 로또 번호를 대조해 로또 결과를 반환한다.', async () => {
-    const LOTTO = new Lotto(['1', '2', '3', '4', '5', '6']);
-    const BONUS = new BonusLotto('7', LOTTO.getNumbers());
+    const LOTTO_NUMBERS = [1, 2, 3, 4, 5, 6];
+    const BONUS = new BonusLotto('7', LOTTO_NUMBERS);
     const MY_LOTTOS = [new Lotto(['1', '2', '3', '4', '8', '10']), new Lotto(['11', '12', '21', '22', '33', '44'])]
 
     const output = {
@@ -31,7 +31,7 @@ describe('계산 유틸리티 테스트', () => {
       '6개': 0,
     }
 
-    const result = getLottoResult(LOTTO, BONUS, MY_LOTTOS);
+    const result = getLottoResult(LOTTO_NUMBERS, BONUS, MY_LOTTOS);
     expect(result).toEqual(output);
   })
 })

@@ -24,11 +24,11 @@ export function calculateProfitRate(lottoResult, cash) {
 
 /**
  * 당첨번호와 내 로또와 대조해 로또 일치 결과를 반환한다.
- * @param {Lotto} winnerLotto 당첨로또
+ * @param {number[]} winnerNumbers 당첨로또 번호
  * @param {BonusLotto} bonus 보너스로또
  * @param {Lotto[]} myLottos 내 로또
  */
-export function getLottoResult(winnerLotto, bonus, myLottos) {
+export function getLottoResult(winnerNumbers, bonus, myLottos) {
   const result = {
     '3개': 0,
     '4개': 0,
@@ -36,8 +36,6 @@ export function getLottoResult(winnerLotto, bonus, myLottos) {
     '5개 일치, 보너스볼': 0,
     '6개': 0,
   };
-
-  const winnerNumbers = winnerLotto.getNumbers();
 
   myLottos.forEach((lotto) => {
     const myNumbers = lotto.getNumbers();

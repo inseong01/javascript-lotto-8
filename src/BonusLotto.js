@@ -3,15 +3,25 @@ class BonusLotto {
 
   constructor(bonus, lottoNums) {
     this.#validate(bonus, lottoNums);
-    this.#bonus = Number(bonus);
+    this.#bonus = (bonus);
   }
 
   #validate(bonus, lottoNums = []) {
     if (!bonus) {
       throw new Error('[ERROR] 보너스 번호를 입력해주세요.');
     }
+    const isSmallTha0 = bonus <= 0;
+    if (isSmallTha0) {
+      throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');
+    }
 
-    if (!/[1-45]/.test(bonus)) {
+    const isBiggerThan45 = bonus > 45;
+    if (isBiggerThan45) {
+      throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');
+    }
+
+    const hasText = /\D/.test(bonus);
+    if (hasText) {
       throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');
     }
 
@@ -22,7 +32,7 @@ class BonusLotto {
 
   /**
    * 로또 번호와 보너스 번호의 일치 여부 반환
-   * @param {number[]} lottoNums 당첨 번호
+   * @param {string[]} lottoNums 당첨 번호
    * @returns 2등 여부
    */
   isMatch(lottoNums) {

@@ -1,20 +1,28 @@
-class Lotto {
+class BonusLotto {
   #bonus;
 
-  constructor(bonus) {
-    this.#validate(bonus);
-    this.#bonus = bonus[0];
+  constructor(bonus, lottoNums) {
+    this.#validate(bonus, lottoNums);
+    this.#bonus = Number(bonus);
   }
 
-  #validate(bonus) {
-    if (bonus.length !== 1) {
-      throw new Error("[ERROR] 로또 번호는 1개여야 합니다.");
+  #validate(bonus, lottoNums = []) {
+    if (!bonus) {
+      throw new Error('[ERROR] 보너스 번호를 입력해주세요.');
+    }
+
+    if (!/[1-45]/.test(bonus)) {
+      throw new Error('[ERROR] 1-45 사이의 보너스 번호를 입력해주세요.');
+    }
+
+    if (lottoNums.includes(bonus)) {
+      throw new Error('[ERROR] 보너스 번호는 로또 번호와 중복될 수 없습니다.');
     }
   }
 
   /**
    * 로또 번호와 보너스 번호의 일치 여부 반환
-   * @param {number[]} lottoNums 당첨 번호 
+   * @param {number[]} lottoNums 당첨 번호
    * @returns 2등 여부
    */
   isMatch(lottoNums) {
@@ -23,4 +31,4 @@ class Lotto {
   }
 }
 
-export default Lotto;
+export default BonusLotto;

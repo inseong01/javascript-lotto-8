@@ -16,10 +16,10 @@ class Validator {
     if (number % 1000 !== 0) throw new Error(this.message);
   }
 
-  static validateLotto(string) {
+  static validateLotto(numbers) {
     // TODO: 유틸리티로 분리
-    const splitedNumbers = string.split(',');
-    const numbers = splitedNumbers.map((num) => num.trim());
+    // const splitedNumbers = string.split(',');
+    // const numbers = splitedNumbers.map((num) => num.trim());
 
     if (numbers.length !== 6) throw Error(this.message);
 

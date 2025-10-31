@@ -3,7 +3,7 @@ class Validator {
     this.message = '[ERROR]';
   }
 
-  validateCash(string) {
+  static validateCash(string) {
     if (/\D/.test(string)) throw Error(this.message);
 
     const number = Number(string);
@@ -15,7 +15,7 @@ class Validator {
     if (number % 1000 !== 0) throw Error(this.message);
   }
 
-  validateLotto(string) {
+  static validateLotto(string) {
     // TODO: 유틸리티로 분리
     const splitedNumbers = string.split(',');
     const numbers = splitedNumbers.map((num) => num.trim());
@@ -29,7 +29,7 @@ class Validator {
     if (new Set(numbers).size !== numbers.length) throw Error(this.message);
   }
 
-  validateBonusNumber(string, lotto) {
+  static validateBonusNumber(string, lotto) {
     if (!string.trim()) throw Error(this.message);
 
     if (/\D/.test(string)) throw Error(this.message);

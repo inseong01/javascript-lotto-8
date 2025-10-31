@@ -3,9 +3,13 @@ import Validator from '../utility/validate.js';
 class Cash {
   #cash;
 
-  constructor(cash) {
-    Validator.validateCash(cash);
-    this.#cash = Number(cash);
+  constructor(string) {
+    this.#validate(string);
+    this.#cash = Number(string);
+  }
+
+  #validate(string) {
+    Validator.validateCash(string);
   }
 
   getPaidCash() {

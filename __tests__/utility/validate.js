@@ -128,6 +128,19 @@ describe('Validator 클래스 테스트', () => {
       })
     })
 
+    test('로또 번호가 할당되지 않으면 예외를 반환한다.', () => {
+      const LOTTO = [];
+      const inputs = ['2', '3', '4'];
+
+      inputs.forEach((input) => {
+        function fnBox() {
+          Validator.validateBonusNumber(input, LOTTO);
+        }
+
+        expect(fnBox).toThrow('[ERROR]');
+      })
+    })
+
     test('정상적인 번호를 입력하면 예외를 반환하지 않는다.', () => {
       const LOTTO = [1, 2, 3, 4, 5, 6];
       const inputs = ['10', '   20', '30   ', '45'];
@@ -137,7 +150,7 @@ describe('Validator 클래스 테스트', () => {
           Validator.validateBonusNumber(input, LOTTO);
         }
 
-        expect(fnBox).toThrow('[ERROR]');
+        expect(fnBox).not.toThrow('[ERROR]');
       })
     })
   })

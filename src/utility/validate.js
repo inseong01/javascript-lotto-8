@@ -33,13 +33,15 @@ class Validator {
   static validateBonusNumber(string, lotto) {
     const trimmedString = string.trim();
 
-    if (trimmedString) throw Error(this.message);
+    if (trimmedString.length === 0) throw Error(this.message);
 
     if (/\D/.test(trimmedString)) throw Error(this.message);
 
     const number = Number(trimmedString);
 
     if (number > 45 || number < 1) throw Error(this.message);
+
+    if (lotto.length !== 6) throw new Error(this.message);
 
     if (lotto.includes(number)) throw Error(this.message);
   }

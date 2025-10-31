@@ -3,9 +3,11 @@ class Validator {
   static message = '[ERROR]';
 
   static validateCash(string) {
-    if (/\D/.test(string)) throw new Error(this.message);
+    const trimmedString = string.trim();
 
-    const number = Number(string);
+    if (/\D/.test(trimmedString)) throw new Error(this.message);
+
+    const number = Number(trimmedString);
 
     if (number === 0) throw new Error(this.message);
 
@@ -29,11 +31,13 @@ class Validator {
   }
 
   static validateBonusNumber(string, lotto) {
-    if (!string.trim()) throw Error(this.message);
+    const trimmedString = string.trim();
 
-    if (/\D/.test(string)) throw Error(this.message);
+    if (trimmedString) throw Error(this.message);
 
-    const number = Number(string);
+    if (/\D/.test(trimmedString)) throw Error(this.message);
+
+    const number = Number(trimmedString);
 
     if (number > 45 || number < 1) throw Error(this.message);
 

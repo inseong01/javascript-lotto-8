@@ -1,8 +1,6 @@
 import Validator from "../../src/utility/validate"
 
 describe('Validator 클래스 테스트', () => {
-  const validator = new Validator();
-
   describe('validateCash', () => {
 
     test('인자가 1000원으로 나눠어지지 않으면 예외를 반환한다.', () => {
@@ -10,7 +8,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateCash(input);
+          Validator.validateCash(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -18,11 +16,11 @@ describe('Validator 클래스 테스트', () => {
     })
 
     test('인자가 1000원으로 나눠어지면 예외를 반환하지 않는다.', () => {
-      const inputs = ['1000', '3000', '10000'];
+      const inputs = ['  1000', '3000  ', '10000'];
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateCash(input);
+          Validator.validateCash(input);
         }
 
         expect(fnBox).not.toThrow('[ERROR]');
@@ -36,7 +34,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateLotto(input);
+          Validator.validateLotto(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -48,7 +46,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateLotto(input);
+          Validator.validateLotto(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -60,7 +58,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateLotto(input);
+          Validator.validateLotto(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -72,7 +70,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateLotto(input);
+          Validator.validateLotto(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -84,7 +82,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateLotto(input);
+          Validator.validateLotto(input);
         }
 
         expect(fnBox).not.toThrow('[ERROR]');
@@ -98,7 +96,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateBonusNumber(input);
+          Validator.validateBonusNumber(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -110,7 +108,7 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateBonusNumber(input);
+          Validator.validateBonusNumber(input);
         }
 
         expect(fnBox).toThrow('[ERROR]');
@@ -123,7 +121,20 @@ describe('Validator 클래스 테스트', () => {
 
       inputs.forEach((input) => {
         function fnBox() {
-          validator.validateBonusNumber(input, LOTTO);
+          Validator.validateBonusNumber(input, LOTTO);
+        }
+
+        expect(fnBox).toThrow('[ERROR]');
+      })
+    })
+
+    test('정상적인 번호를 입력하면 예외를 반환하지 않는다.', () => {
+      const LOTTO = [1, 2, 3, 4, 5, 6];
+      const inputs = ['10', '   20', '30   ', '45'];
+
+      inputs.forEach((input) => {
+        function fnBox() {
+          Validator.validateBonusNumber(input, LOTTO);
         }
 
         expect(fnBox).toThrow('[ERROR]');

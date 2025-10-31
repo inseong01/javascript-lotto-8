@@ -1,18 +1,17 @@
 class Validator {
-  constructor() {
-    this.message = '[ERROR]';
-  }
+  // TODO 메시지 상수 처리
+  static message = '[ERROR]';
 
   static validateCash(string) {
-    if (/\D/.test(string)) throw Error(this.message);
+    if (/\D/.test(string)) throw new Error(this.message);
 
     const number = Number(string);
 
-    if (number === 0) throw Error(this.message);
+    if (number === 0) throw new Error(this.message);
 
-    if (Math.sign(number) !== 1) throw Error(this.message);
+    if (Math.sign(number) !== 1) throw new Error(this.message);
 
-    if (number % 1000 !== 0) throw Error(this.message);
+    if (number % 1000 !== 0) throw new Error(this.message);
   }
 
   static validateLotto(string) {

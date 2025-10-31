@@ -39,4 +39,18 @@ describe('Cash 클래스 테스트', () => {
       })
     })
   })
+
+  describe('getAmountBy', () => {
+    test('메서드를 호출하면 가진 현금 만큼 구매 상품 개수가 반환된다.', () => {
+      const PRODUCT_PRICE = 1000;
+      const inputs = ['12000', '1000   ', '   4000', ' 5000 '];
+      const outputs = [12, 1, 4, 5];
+
+      inputs.forEach((input, i) => {
+        const cash = new Cash(input);
+
+        expect(cash.getAmountBy(PRODUCT_PRICE)).toBe(outputs[i]);
+      })
+    })
+  })
 })

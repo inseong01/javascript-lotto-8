@@ -15,6 +15,10 @@ class Cash {
   getPaidCash() {
     return this.#cash;
   }
+
+  getAmountBy(productPrice) {
+    return this.#cash / productPrice;
+  }
 }
 
 export default Cash;

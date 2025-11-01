@@ -17,13 +17,10 @@ class Validator {
   }
 
   static validateLotto(numbers) {
-    // TODO: 유틸리티로 분리
-    // const splitedNumbers = string.split(',');
-    // const numbers = splitedNumbers.map((num) => num.trim());
-
     if (numbers.length !== 6) throw Error(this.message);
 
-    if (numbers.some((num) => (/\D/).test(num))) throw Error(this.message);
+    const hasString = numbers.some((num) => typeof num === 'string');
+    if (hasString && numbers.some((num) => (/\D/).test(num))) throw Error(this.message);
 
     if (numbers.some((num) => num > 45 || num < 1)) throw Error(this.message);
 

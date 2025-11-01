@@ -1,4 +1,4 @@
-import { generateNumbers, sortNumbersAsc } from '../utility/generate.js';
+import { generateNumbers } from '../utility/generate.js';
 import BonusNumber from './BonusNumber.js';
 import Lotto from './Lotto.js';
 
@@ -8,8 +8,7 @@ class LottoMachine {
 
     const lottos = repetitions.map(() => {
       const numbers = generateNumbers();
-      const ascNumbers = sortNumbersAsc(numbers);
-      return new Lotto(ascNumbers);
+      return new Lotto(numbers);
     });
 
     return lottos;

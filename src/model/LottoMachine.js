@@ -18,6 +18,11 @@ class LottoMachine {
   static generateBonusNumber(input, jackpotNumbers) {
     return new BonusNumber(input, jackpotNumbers);
   }
+
+  static getjackpotLotto(input) {
+    const numbers = input.split(',').map((num) => num.trim());
+    return new Lotto(numbers);
+  }
 }
 
 export default LottoMachine;

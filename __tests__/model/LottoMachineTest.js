@@ -24,4 +24,15 @@ describe('LottoMachine 클래스 테스트', () => {
       })
     })
   })
+
+  describe('getjackpotLotto', () => {
+    test('메서드를 호출하면 입력한 당첨 로또를 발행한다.', () => {
+      const input = '1,2,3,4,5,6';
+      const output = [1, 2, 3, 4, 5, 6];
+
+      const jackpotLotto = LottoMachine.getjackpotLotto(input)
+
+      expect(jackpotLotto.getNumbers()).toEqual(output);
+    })
+  })
 })

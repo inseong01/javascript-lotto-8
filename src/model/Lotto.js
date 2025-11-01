@@ -6,7 +6,7 @@ class Lotto {
   constructor(numbers) {
     this.#validate(numbers);
     // TODO: 유틸리티 함수로 분리
-    this.#numbers = numbers.sort((a, b) => a - b);
+    this.#numbers = numbers.map(Number).sort((a, b) => a - b);
   }
 
   #validate(numbers) {

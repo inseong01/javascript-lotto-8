@@ -38,12 +38,12 @@ class LottoController {
       this.outputView.print(err.message);
       await this.purchaseLotto();
     }
+  }
 
-    // 로또 개수 출력
+  showPurchasedLottos() {
     const lottoAmount = this.#cash.getAmountBy(LOTTO_PRICE);
     this.outputView.print(`\n${lottoAmount}개를 구매했습니다.`);
 
-    // 번호 출력
     this.#myLottos = LottoMachine.generatetLotto(lottoAmount);
     this.#myLottos.forEach((lotto) => {
       const numbers = lotto.getNumbers();

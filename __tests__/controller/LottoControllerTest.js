@@ -43,7 +43,9 @@ describe('LottoController 클래스 테스트', () => {
 
       expect(readLineAsyncMock).toHaveBeenCalledTimes(2);
     })
+  })
 
+  describe('showPurchasedLottos', () => {
     test('올바른 구입금액을 입력하면 로또 구매 양과 번호가 출력된다.', async () => {
       const logSpy = getLogSpy();
 
@@ -61,6 +63,7 @@ describe('LottoController 클래스 테스트', () => {
 
       const lottoController = new LottoController()
       await lottoController.purchaseLotto();
+      lottoController.showPurchasedLottos();
 
       const logs = [
         "8개를 구매했습니다.",
@@ -132,6 +135,7 @@ describe('LottoController 클래스 테스트', () => {
 
       const lottoController = new LottoController();
       await lottoController.purchaseLotto();
+      lottoController.showPurchasedLottos();
       await lottoController.setJackpotLotto();
       await lottoController.setBonusNumber();
       lottoController.showLottoResult();

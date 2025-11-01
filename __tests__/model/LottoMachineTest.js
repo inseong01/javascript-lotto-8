@@ -1,4 +1,4 @@
-import LottoMachine from "../../src/model/lottoMachine";
+import LottoMachine from "../../src/model/LottoMachine";
 
 describe('LottoMachine 클래스 테스트', () => {
   describe('generatetLotto', () => {

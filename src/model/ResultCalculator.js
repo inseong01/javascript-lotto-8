@@ -20,11 +20,11 @@ class ResultCalculator {
 
   getTotalMatch() {
     const result = {
-      first: 0,
-      second: 0,
-      third: 0,
-      forth: 0,
       fifth: 0,
+      forth: 0,
+      third: 0,
+      second: 0,
+      first: 0,
     };
 
     const jackpotLotto = this.#jackpotLotto.getNumbers();

@@ -1,4 +1,4 @@
-import Validator from '../utility/validate.js';
+import Validator from '../utility/Validator.js';
 
 class Cash {
   #cash;

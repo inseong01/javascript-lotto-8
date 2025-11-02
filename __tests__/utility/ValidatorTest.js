@@ -1,4 +1,4 @@
-import Validator from "../../src/utility/validate"
+import Validator from "../../src/utility/Validator"
 
 describe('Validator 클래스 테스트', () => {
   describe('validateCash', () => {

@@ -13,7 +13,8 @@ module.exports = {
         js: "always",
       }
     ],
-    "class-methods-use-this": ["error", { "exceptMethods": ['#validate'] }]
+    "class-methods-use-this": ["error", { "exceptMethods": ['#validate'] }],
+    "import/prefer-default-export": ["off"]
   },
   "parserOptions": {
     "ecmaVersion": 13,

@@ -1,3 +1,5 @@
+import { LOTTO_RANK, PRIZE } from '../utility/const/LottoGame.js';
+
 class ResultCalculator {
   #myLottos;
 
@@ -69,24 +71,24 @@ class ResultCalculator {
 
   getProfitRate() {
     const result = this.#result;
-    const totalProfit = Object.entries(result).reduce((acc, [key, value]) => {
-      if (value === 0) return acc;
+    const totalProfit = Object.entries(result).reduce((acc, [rank, amount]) => {
+      if (amount === 0) return acc;
 
-      switch (key) {
-        case 'first': {
-          return acc + (value * 2000000000);
+      switch (rank) {
+        case LOTTO_RANK.FIRST: {
+          return acc + (amount * PRIZE.FIRST_RANK);
         }
-        case 'second': {
-          return acc + (value * 30000000);
+        case LOTTO_RANK.SECOND: {
+          return acc + (amount * PRIZE.SECOND_RANK);
         }
-        case 'third': {
-          return acc + (value * 1500000);
+        case LOTTO_RANK.THIRD: {
+          return acc + (amount * PRIZE.THIRD_RANK);
         }
-        case 'forth': {
-          return acc + (value * 50000);
+        case LOTTO_RANK.FORTH: {
+          return acc + (amount * PRIZE.FORTH_RANK);
         }
-        case 'fifth': {
-          return acc + (value * 5000);
+        case LOTTO_RANK.FIFTH: {
+          return acc + (amount * PRIZE.FIFTH_RANK);
         }
         default: return acc;
       }

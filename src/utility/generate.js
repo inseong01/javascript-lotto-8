@@ -1,13 +1,18 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
 import Lotto from '../Lotto.js';
+import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from './const/LottoGame.js';
 
 /**
- * 1-45 사이의 무작위 수로 구성된 숫자 6자리를 생성한다.
+ * 1-MAX_RANGE 사이의 무작위 수로 구성된 숫자 6자리를 생성한다.
  * @returns 숫자 6자리 배열
  */
 export function generateNumbers() {
-  const numbers = MissionUtils.Random.pickUniqueNumbersInRange(1, 45, 6);
+  const numbers = MissionUtils.Random.pickUniqueNumbersInRange(
+    MIN_RANGE,
+    MAX_RANGE,
+    LOTTO_NUMBER_AMOUNT,
+  );
   return numbers;
 }
 

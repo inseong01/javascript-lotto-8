@@ -6,14 +6,8 @@ import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 import getMatchPrompt from '../utility/getPrompt.js';
-
-const LOTTO_PRICE = 1000;
-const PROMPT = {
-  purchaseLotto: '구입금액을 입력해 주세요.\n',
-  enterLottoNumbers: '\n당첨 번호를 입력해 주세요.\n',
-  enterBonusNumber: '\n보너스 번호를 입력해 주세요.\n',
-  result: '\n당첨 통계',
-};
+import { PROMPT } from '../utility/const/Prompt.js';
+import { LOTTO_PURCHASE_PRICE } from '../utility/const/LottoGame.js';
 
 class LottoController {
   #cash;
@@ -30,7 +24,7 @@ class LottoController {
   }
 
   async purchaseLotto() {
-    const cashInput = await this.inputView.getLine(PROMPT.purchaseLotto);
+    const cashInput = await this.inputView.getLine(PROMPT.PUSRCHASE_LOTTO);
 
     try {
       this.#cash = new Cash(cashInput);
@@ -41,7 +35,7 @@ class LottoController {
   }
 
   showPurchasedLottos() {
-    const lottoAmount = this.#cash.getAmountBy(LOTTO_PRICE);
+    const lottoAmount = this.#cash.getAmountBy(LOTTO_PURCHASE_PRICE);
     this.outputView.print(`\n${lottoAmount}개를 구매했습니다.`);
 
     this.#myLottos = LottoMachine.generatetLotto(lottoAmount);
@@ -53,7 +47,7 @@ class LottoController {
   }
 
   async setJackpotLotto() {
-    const lottoInput = await this.inputView.getLine(PROMPT.enterLottoNumbers);
+    const lottoInput = await this.inputView.getLine(PROMPT.ENTER_LOTTO_NUMBERS);
 
     try {
       this.#jackpotLotto = LottoMachine.getjackpotLotto(lottoInput);
@@ -64,7 +58,7 @@ class LottoController {
   }
 
   async setBonusNumber() {
-    const bonusNumberInput = await this.inputView.getLine(PROMPT.enterBonusNumber);
+    const bonusNumberInput = await this.inputView.getLine(PROMPT.ENTER_BONUS_NUMBER);
 
     const jackpotNumbers = this.#jackpotLotto.getNumbers();
     try {
@@ -76,7 +70,7 @@ class LottoController {
   }
 
   showLottoResult() {
-    this.outputView.print(PROMPT.result);
+    this.outputView.print(PROMPT.RESULT);
     this.outputView.print('---');
 
     // 집계
@@ -88,9 +82,9 @@ class LottoController {
     );
     const matchResult = resultCalculator.getTotalMatch();
 
-    Object.entries(matchResult).forEach(([match, count]) => {
-      const matchPropmt = getMatchPrompt(match);
-      this.outputView.print(`${matchPropmt} - ${count}개`);
+    Object.entries(matchResult).forEach(([rank, amount]) => {
+      const matchPropmt = getMatchPrompt(rank);
+      this.outputView.print(`${matchPropmt} - ${amount}개`);
     });
 
     // 수익률

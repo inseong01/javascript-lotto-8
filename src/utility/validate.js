@@ -1,46 +1,74 @@
-class Validator {
-  // TODO 메시지 상수 처리
-  static message = '[ERROR]';
+import { ERROR_MESSAGE } from './const/Message.js';
+import { NOT_NUMBER_REGX } from './const/Utility.js';
+import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from './const/LottoGame.js';
 
+class Validator {
   static validateCash(string) {
     const trimmedString = string.trim();
 
-    if (/\D/.test(trimmedString)) throw new Error(this.message);
+    if (NOT_NUMBER_REGX.test(trimmedString)) {
+      throw new Error(ERROR_MESSAGE.CASH_HAS_STRING);
+    }
 
     const number = Number(trimmedString);
 
-    if (number === 0) throw new Error(this.message);
+    if (number === 0) {
+      throw new Error(ERROR_MESSAGE.CASH_IS_ZERO);
+    }
 
-    if (Math.sign(number) !== 1) throw new Error(this.message);
+    if (Math.sign(number) !== 1) {
+      throw new Error(ERROR_MESSAGE.CASH_IS_NOT_POSITIVE);
+    }
 
-    if (number % 1000 !== 0) throw new Error(this.message);
+    if (number % 1000 !== 0) {
+      throw new Error(ERROR_MESSAGE.CASH_HAS_CHANGE);
+    }
   }
 
   static validateLotto(numbers) {
-    if (numbers.length !== 6) throw Error(this.message);
+    if (numbers.length !== LOTTO_NUMBER_AMOUNT) {
+      throw Error(ERROR_MESSAGE.LOTTO_IS_NOT_SIX_ELEMENT);
+    }
 
     const hasString = numbers.some((num) => typeof num === 'string');
-    if (hasString && numbers.some((num) => (/\D/).test(num))) throw Error(this.message);
+    const hasNaN = numbers.some((num) => (NOT_NUMBER_REGX).test(num));
+    if (hasString && hasNaN) {
+      throw Error(ERROR_MESSAGE.LOTTO_HAVE_STRING);
+    }
 
-    if (numbers.some((num) => num > 45 || num < 1)) throw Error(this.message);
+    if (numbers.some((num) => num > MAX_RANGE || num < MIN_RANGE)) {
+      throw Error(ERROR_MESSAGE.LOTTO_OUT_OF_RANGE);
+    }
 
-    if (new Set(numbers).size !== numbers.length) throw Error(this.message);
+    if (new Set(numbers).size !== numbers.length) {
+      throw Error(ERROR_MESSAGE.LOTTO_IS_DUPLICATED);
+    }
   }
 
-  static validateBonusNumber(string, lotto) {
+  static validateBonusNumber(string, lotto = []) {
     const trimmedString = string.trim();
 
-    if (trimmedString.length === 0) throw Error(this.message);
+    if (trimmedString.length === 0) {
+      throw Error(ERROR_MESSAGE.BONUS_IS_EMPTY);
+    }
 
-    if (/\D/.test(trimmedString)) throw Error(this.message);
+    if (NOT_NUMBER_REGX.test(trimmedString)) {
+      throw Error(ERROR_MESSAGE.BONUS_HAS_STRING);
+    }
 
     const number = Number(trimmedString);
 
-    if (number > 45 || number < 1) throw Error(this.message);
+    if (number > MAX_RANGE || number < MIN_RANGE) {
+      throw Error(ERROR_MESSAGE.BONUS_OUT_OF_RANGE);
+    }
 
-    if (lotto.length !== 6) throw new Error(this.message);
+    if (lotto.length !== LOTTO_NUMBER_AMOUNT) {
+      throw new Error(ERROR_MESSAGE.BONUS_HAS_NO_COMPARE);
+    }
 
-    if (lotto.includes(number)) throw Error(this.message);
+    if (lotto.includes(number)) {
+      throw Error(ERROR_MESSAGE.BONUS_IS_DUPLICATED);
+    }
   }
 }
 

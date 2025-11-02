@@ -1,4 +1,4 @@
-import { LOTTO_RANK, PRIZE } from '../utility/const/LottoGame.js';
+import { calculatePrize } from '../utility/CalculatePrize.js';
 
 class ResultCalculator {
   #myLottos;
@@ -27,40 +27,40 @@ class ResultCalculator {
       first: 0,
     };
 
+    const myLottos = this.#myLottos;
     const jackpotLotto = this.#jackpotLotto.getNumbers();
 
-    this.#myLottos.forEach((myLotto) => {
+    myLottos.forEach((myLotto) => {
       const numbers = myLotto.getNumbers();
 
-      const matchCount = numbers.reduce((acc, num) => {
+      const matchNumberCount = numbers.reduce((acc, num) => {
         if (jackpotLotto.includes(num)) return acc + 1;
         return acc;
       }, 0);
 
-      switch (matchCount) {
-        case 6: {
-          result.first += 1;
-          break;
-        }
-        case 5: {
-          result.third += 1;
-          break;
-        }
-        case 4: {
-          const bonus = this.#bonusNumber;
-          if (bonus.matches(numbers)) {
-            result.second += 1;
-            break;
-          }
+      if (matchNumberCount === 6) {
+        result.first += 1;
+        return;
+      }
 
-          result.forth += 1;
-          break;
-        }
-        case 3: {
-          result.fifth += 1;
-          break;
-        }
-        default: break;
+      const bonus = this.#bonusNumber;
+      if (matchNumberCount === 4 && bonus.matches(numbers)) {
+        result.second += 1;
+        return;
+      }
+
+      if (matchNumberCount === 4) {
+        result.forth += 1;
+        return;
+      }
+
+      if (matchNumberCount === 5) {
+        result.third += 1;
+        return;
+      }
+
+      if (matchNumberCount === 3) {
+        result.fifth += 1;
       }
     });
 
@@ -71,33 +71,12 @@ class ResultCalculator {
 
   getProfitRate() {
     const result = this.#result;
-    const totalProfit = Object.entries(result).reduce((acc, [rank, amount]) => {
-      if (amount === 0) return acc;
-
-      switch (rank) {
-        case LOTTO_RANK.FIRST: {
-          return acc + (amount * PRIZE.FIRST_RANK);
-        }
-        case LOTTO_RANK.SECOND: {
-          return acc + (amount * PRIZE.SECOND_RANK);
-        }
-        case LOTTO_RANK.THIRD: {
-          return acc + (amount * PRIZE.THIRD_RANK);
-        }
-        case LOTTO_RANK.FORTH: {
-          return acc + (amount * PRIZE.FORTH_RANK);
-        }
-        case LOTTO_RANK.FIFTH: {
-          return acc + (amount * PRIZE.FIFTH_RANK);
-        }
-        default: return acc;
-      }
-    }, 0);
+    const totalProfit = Object.entries(result).reduce(calculatePrize, 0);
 
     const cash = this.#cash.getPaidCash();
     const profitRate = ((totalProfit / cash) * 100).toFixed(1);
 
-    return Number(profitRate);
+    return profitRate;
   }
 }
 

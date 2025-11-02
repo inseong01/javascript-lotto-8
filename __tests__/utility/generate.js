@@ -1,17 +1,10 @@
-import { generateNumbers, sortNumbersAsc } from "../../src/utility/generate";
+import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from "../../src/utility/const/LottoGame";
+import { generateNumbers } from "../../src/utility/generate";
 
-describe('생성 유틸리티 테스트', () => {
-  test('generateNumbers, 1-45 사이 무작위 숫자 6자리 배열을 반환한다.', async () => {
+describe('generateNumbers 유틸리티 테스트', () => {
+  test(`${MIN_RANGE}-${MAX_RANGE} 사이 무작위 숫자 ${LOTTO_NUMBER_AMOUNT}자리 배열을 반환한다.`, async () => {
     const result = generateNumbers();
 
     expect(new Set(result).size === 6).toBe(true);
-  })
-
-  test('sortNumbersAsc, 오름차순으로 정렬된 숫자 배열을 반환한다.', async () => {
-    const input = [10, 3, 5, 2, 6, 1];
-    const output = [1, 2, 3, 5, 6, 10];
-
-    const result = sortNumbersAsc(input)
-    expect(result).toEqual(output);
   })
 })

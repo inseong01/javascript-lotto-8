@@ -1,6 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 
-import Lotto from '../Lotto.js';
 import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from './const/LottoGame.js';
 
 /**
@@ -24,31 +23,4 @@ export function generateNumbers() {
 export function sortNumbersAsc(numbers) {
   const sortedArr = numbers.sort((a, b) => a - b);
   return sortedArr;
-}
-
-/**
- * 문자 배열을 숫자 배열로 반환한다.
- * @param {string[]} strings 문자 숫자 배열
- * @returns 오름차순 숫자 배열
- */
-export function transformToNumber(strings) {
-  const numbers = strings.map(Number);
-  return numbers;
-}
-
-/**
- * 장 수 만큼 로또를 발급한다.
- * @param {number} amount 로또 장 수
- * @returns {Lotto[]}
- */
-export function generateLottos(amount) {
-  const generateRepititions = Array(amount).fill(0);
-
-  const lottos = generateRepititions.map(() => {
-    const numbers = generateNumbers();
-    const ascNumArr = sortNumbersAsc(numbers);
-    return new Lotto(ascNumArr);
-  });
-
-  return lottos;
 }

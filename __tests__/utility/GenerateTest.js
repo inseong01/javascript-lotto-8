@@ -1,4 +1,4 @@
-import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from "../../src/utility/const/LottoGame.js";
+import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from "../../src/utility/const/lottoGame.js";
 import { generateNumbers } from "../../src/utility/Generate.js";
 
 describe('generateNumbers 유틸리티 테스트', () => {

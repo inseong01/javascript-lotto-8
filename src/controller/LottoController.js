@@ -6,8 +6,8 @@ import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
 import getMatchPrompt from '../utility/GetPrompt.js';
-import { PROMPT } from '../utility/const/Prompt.js';
-import { LOTTO_PURCHASE_PRICE } from '../utility/const/LottoGame.js';
+import { PROMPT } from '../utility/const/prompt.js';
+import { LOTTO_PURCHASE_PRICE } from '../utility/const/lottoGame.js';
 
 class LottoController {
   #cash;

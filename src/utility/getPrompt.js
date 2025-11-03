@@ -1,4 +1,4 @@
-import { LOTTO_RANK, PRIZE } from './const/LottoGame.js';
+import { LOTTO_RANK, PRIZE } from './const/lottoGame.js';
 
 export default function getMatchPrompt(rank) {
   switch (rank) {

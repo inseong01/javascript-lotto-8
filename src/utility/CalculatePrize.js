@@ -1,4 +1,4 @@
-import { LOTTO_RANK, PRIZE } from './const/LottoGame.js';
+import { LOTTO_RANK, PRIZE } from './const/lottoGame.js';
 
 /**
  * 로또 집계 결과로 상금 합계를 구한다.

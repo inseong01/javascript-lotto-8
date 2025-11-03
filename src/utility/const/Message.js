@@ -3,7 +3,7 @@ import {
   LOTTO_PURCHASE_PRICE,
   MAX_RANGE,
   MIN_RANGE,
-} from './lottoGame.js';
+} from './LottoGame.js';
 
 export const ERROR_MESSAGE = {
   // CASH

@@ -1,6 +1,6 @@
-import { ERROR_MESSAGE } from './const/message.js';
-import { NOT_NUMBER_REGX } from './const/utility.js';
-import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from './const/lottoGame.js';
+import { ERROR_MESSAGE } from './const/Message.js';
+import { NOT_NUMBER_REGX } from './const/Utility.js';
+import { LOTTO_NUMBER_AMOUNT, MAX_RANGE, MIN_RANGE } from './const/LottoGame.js';
 
 class Validator {
   static validateCash(string) {

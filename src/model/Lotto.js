@@ -1,5 +1,5 @@
-import { sortAsc } from '../utility/sortAsc.js';
-import Validator from '../utility/validator.js';
+import { sortAsc } from '../utility/SortAsc.js';
+import Validator from '../utility/Validator.js';
 
 class Lotto {
   #numbers;

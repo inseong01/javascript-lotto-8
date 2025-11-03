@@ -5,9 +5,9 @@ import ResultCalculator from '../model/ResultCalculator.js';
 import InputView from '../view/InputView.js';
 import OutputView from '../view/OutputView.js';
 
-import getMatchPrompt from '../utility/getPrompt.js';
-import { PROMPT } from '../utility/const/prompt.js';
-import { LOTTO_PURCHASE_PRICE } from '../utility/const/lottoGame.js';
+import getMatchPrompt from '../utility/GetPrompt.js';
+import { PROMPT } from '../utility/const/Prompt.js';
+import { LOTTO_PURCHASE_PRICE } from '../utility/const/LottoGame.js';
 
 class LottoController {
   #cash;

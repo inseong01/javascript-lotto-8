@@ -1,4 +1,4 @@
-import { generateNumbers } from '../utility/generate.js';
+import { generateNumbers } from '../utility/Generate.js';
 import BonusNumber from './BonusNumber.js';
 import Lotto from './Lotto.js';
 

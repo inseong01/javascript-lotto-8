@@ -1,4 +1,4 @@
-import { sortAsc } from "../../src/utility/sortAsc.js";
+import { sortAsc } from "../../src/utility/SortAsc.js";
 
 describe('sortAsc 유틸리티 테스트', () => {
   test('오름차순으로 정렬된 숫자 배열을 반환한다.', async () => {

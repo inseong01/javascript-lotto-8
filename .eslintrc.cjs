@@ -13,6 +13,7 @@ module.exports = {
         js: "always",
       }
     ],
+    "class-methods-use-this": ["off"],
     "import/prefer-default-export": ["off"]
   },
   "parserOptions": {

@@ -33,7 +33,7 @@ describe('ResultCalculaor 클래스 테스트', () => {
 
   describe('getProfitRate', () => {
     test('메서드를 호출하면 당첨 수익률이 반환된다.', () => {
-      const output = 3000000.0;
+      const output = '3000000.0';
 
       const resultCalculator = new ResultCalculator(MY_LOTTO, LOTTO, BONUS_NUMBER, CASH);
       resultCalculator.getTotalMatch()

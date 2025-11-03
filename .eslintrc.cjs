@@ -13,7 +13,6 @@ module.exports = {
         js: "always",
       }
     ],
-    "class-methods-use-this": ["error", { "exceptMethods": ['#validate'] }],
     "import/prefer-default-export": ["off"]
   },
   "parserOptions": {

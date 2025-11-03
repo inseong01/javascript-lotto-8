@@ -1,4 +1,5 @@
 import { calculatePrize } from '../utility/CalculatePrize.js';
+import { INIT_MATCH_LOTTO_RESULT } from '../utility/const/LottoGame.js';
 
 class ResultCalculator {
   #myLottos;
@@ -19,54 +20,61 @@ class ResultCalculator {
   }
 
   getTotalMatch() {
-    const result = {
-      fifth: 0,
-      forth: 0,
-      third: 0,
-      second: 0,
-      first: 0,
-    };
-
     const myLottos = this.#myLottos;
-    const jackpotLotto = this.#jackpotLotto.getNumbers();
 
-    myLottos.forEach((myLotto) => {
-      const numbers = myLotto.getNumbers();
-
-      const matchNumberCount = numbers.reduce((acc, num) => {
-        if (jackpotLotto.includes(num)) return acc + 1;
-        return acc;
-      }, 0);
-
-      if (matchNumberCount === 6) {
-        result.first += 1;
-        return;
-      }
-
-      const bonus = this.#bonusNumber;
-      if (matchNumberCount === 4 && bonus.matches(numbers)) {
-        result.second += 1;
-        return;
-      }
-
-      if (matchNumberCount === 4) {
-        result.forth += 1;
-        return;
-      }
-
-      if (matchNumberCount === 5) {
-        result.third += 1;
-        return;
-      }
-
-      if (matchNumberCount === 3) {
-        result.fifth += 1;
-      }
-    });
+    const result = myLottos.reduce((res, myLotto) => (
+      this.#calculateLottoResult(res, myLotto)
+    ), INIT_MATCH_LOTTO_RESULT);
 
     this.#result = result;
 
     return result;
+  }
+
+  #calculateLottoResult(res, myLotto) {
+    const myNumbers = myLotto.getNumbers();
+    const jackpotLotto = this.#jackpotLotto.getNumbers();
+
+    const matchNumberCount = myNumbers.reduce((acc, num) => (
+      this.#calculateMatchNumberCount(acc, num, jackpotLotto)
+    ), 0);
+
+    return this.#calculateMatchLottoAmount(matchNumberCount, res, myNumbers);
+  }
+
+  #calculateMatchNumberCount(acc, num, jackpotLotto) {
+    if (jackpotLotto.includes(num)) return acc + 1;
+    return acc;
+  }
+
+  #calculateMatchLottoAmount(matchNumberCount, res, myNumbers) {
+    if (matchNumberCount === 6) {
+      const first = res.first + 1;
+      return { ...res, first };
+    }
+
+    const bonus = this.#bonusNumber;
+    if (matchNumberCount === 4 && bonus.matches(myNumbers)) {
+      const second = res.second + 1;
+      return { ...res, second };
+    }
+
+    if (matchNumberCount === 4) {
+      const forth = res.forth + 1;
+      return { ...res, forth };
+    }
+
+    if (matchNumberCount === 5) {
+      const third = res.third + 1;
+      return { ...res, third };
+    }
+
+    if (matchNumberCount === 3) {
+      const fifth = res.fifth + 1;
+      return { ...res, fifth };
+    }
+
+    return { ...res };
   }
 
   getProfitRate() {

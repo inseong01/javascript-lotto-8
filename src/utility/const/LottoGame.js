@@ -20,3 +20,11 @@ export const LOTTO_RANK = {
   FORTH: 'forth', // 4개
   FIFTH: 'fifth', // 3개
 };
+
+export const INIT_MATCH_LOTTO_RESULT = {
+  fifth: 0,
+  forth: 0,
+  third: 0,
+  second: 0,
+  first: 0,
+};

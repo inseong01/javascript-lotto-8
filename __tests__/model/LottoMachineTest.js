@@ -1,4 +1,4 @@
-import LottoMachine from "../../src/model/LottoMachine";
+import LottoMachine from "../../src/model/LottoMachine.js";
 
 describe('LottoMachine 클래스 테스트', () => {
   describe('generatetLotto', () => {

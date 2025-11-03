@@ -1,7 +1,7 @@
-import BonusNumber from "../../src/model/BonusNumber";
-import Cash from "../../src/model/Cash";
-import Lotto from "../../src/model/Lotto";
-import ResultCalculator from "../../src/model/ResultCalculator";
+import BonusNumber from "../../src/model/BonusNumber.js";
+import Cash from "../../src/model/Cash.js";
+import Lotto from "../../src/model/Lotto.js";
+import ResultCalculator from "../../src/model/ResultCalculator.js";
 
 
 const LOTTO = new Lotto([1, 2, 3, 4, 5, 6]);

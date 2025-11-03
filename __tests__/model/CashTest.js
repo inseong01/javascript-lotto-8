@@ -1,4 +1,4 @@
-import Cash from "../../src/model/Cash"
+import Cash from "../../src/model/Cash.js";
 
 describe('Cash 클래스 테스트', () => {
   describe('인스턴스 생성', () => {

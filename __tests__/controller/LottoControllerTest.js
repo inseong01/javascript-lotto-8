@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import LottoController from "../../src/controller/LottoController"
+import LottoController from "../../src/controller/LottoController.js"
 
 const readLineAsyncMock = jest.fn();
 

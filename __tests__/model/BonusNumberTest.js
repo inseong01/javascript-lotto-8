@@ -1,4 +1,4 @@
-import BonusNumber from "../../src/model/BonusNumber";
+import BonusNumber from "../../src/model/BonusNumber.js";
 
 const LOTTO = [1, 2, 3, 4, 5, 6];
 

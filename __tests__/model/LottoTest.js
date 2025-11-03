@@ -1,4 +1,4 @@
-import Lotto from "../../src/model/Lotto";
+import Lotto from "../../src/model/Lotto.js";
 
 describe('Lotto 클래스 테스트', () => {
   describe('인스턴스 생성', () => {

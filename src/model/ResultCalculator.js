@@ -1,4 +1,4 @@
-import { calculatePrize } from '../utility/CalculatePrize.js';
+import { calculatePrize } from '../utility/calculatePrize.js';
 
 class ResultCalculator {
   #myLottos;
